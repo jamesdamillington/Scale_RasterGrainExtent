@@ -1,4 +1,6 @@
 
+#code to manipulate data and create raster presented in Figure 1 of Millington Scale chapter in Francis et al. Handbook of Landscape Ecology
+
 ######
 ###### Load packages
 library(raster)
@@ -113,29 +115,12 @@ raster_summary(LandCov)
 LC_plot <- raster_plot(LandCov)
 print(LC_plot)
 
-#ggsave("LC.png", LC_plot) 
-#ggsave("LC.pdf", LC_plot) 
+ggsave("LC10_plot.png", LC_plot) 
+ggsave("LC10_plot.pdf", LC_plot) 
 
 
 ######
 ###### Varying Grain
-
-##### 20-40
-LandCov20 <- raster_degrade(LandCov, f=2)
-LandCov40 <- raster_degrade(LandCov, f=4)
-
-raster_summary(LandCov20)
-raster_summary(LandCov40)
-
-LC_plot20 <- raster_plot(LandCov20)
-LC_plot40 <- raster_plot(LandCov40)
-
-print(LC_plot20)
-print(LC_plot40)
-
-#ggsave("LC40.png", LC_plot40) 
-#ggsave("LC40.pdf", LC_plot40)  
-
 
 ##### 30-90 (use this in final version?)
 LandCov30 <- raster_degrade(LandCov, f=3)
@@ -150,38 +135,12 @@ LC_plot90 <- raster_plot(LandCov90)
 print(LC_plot30)
 print(LC_plot90)
 
-#ggsave("LC90.png", LC_plot90) 
-#ggsave("LC90.pdf", LC_plot90)  
+ggsave("LC90.png", LC_plot90) 
+ggsave("LC90.pdf", LC_plot90)  
 
 
 ######
 ###### Varying Extent
-
-##40-20-10
-raster_summary(LandCov40)
-
-LC20_quart <- raster_deextent(LandCov20, 2)
-raster_summary(LC20_quart)
-
-#for plotting extend to full extent of original data
-LC20_quart_ext <- extend(LC20_quart, LandCov)
-LC20_quart_plot <- raster_plot(LC20_quart_ext)
-print(LC20_quart_plot)
-
-#ggsave("LC20_quart_ext.png", LC20_quart_plot)  
-#ggsave("LC20_quart_ext.pdf", LC20_quart_plot) 
-
-LC10_quart <- raster_deextent(LandCov, 1.333)
-raster_summary(LC10_quart)
-
-#for plotting extend to full extent of original data
-LC10_quart_ext <- extend(LC10_quart, LandCov)
-LC10_quart_plot <- raster_plot(LC10_quart_ext)
-print(LC10_quart_plot)
-
-#ggsave("LC10_quart_ext.png", LC10_quart_plot)  
-#ggsave("LC10_quart_ext.pdf", LC10_quart_plot) 
-
 
 ##90-30-10 (use this in final version?)
 raster_summary(LandCov90)
@@ -194,8 +153,8 @@ LC30_third_ext <- extend(LC30_third, LandCov)
 LC30_third_plot <- raster_plot(LC30_third_ext)
 print(LC30_third_plot)
 
-#ggsave("LC20_quart_ext.png", LC20_quart_plot)  
-#ggsave("LC20_quart_ext.pdf", LC20_quart_plot) 
+ggsave("LC30_third_plot.png", LC30_third_plot)  
+ggsave("LC30_third_plot.pdf", LC30_third_plot) 
 
 LC10_ninth <- raster_deextent(LandCov, 1.12)
 raster_summary(LC10_ninth)
@@ -205,5 +164,57 @@ LC10_ninth_ext <- extend(LC10_ninth, LandCov)
 LC10_ninth_plot <- raster_plot(LC10_ninth_ext)
 print(LC10_ninth_plot)
 
-#ggsave("LC10_quart_ext.png", LC10_quart_plot)  
-#ggsave("LC10_quart_ext.pdf", LC10_quart_plot) 
+ggsave("LC10_ninth_plot.png", LC10_ninth_plot)  
+ggsave("LC10_ninth_plot.pdf", LC10_ninth_plot) 
+
+
+
+
+
+
+######
+###### Below used in original draft
+
+###### Varying Grain
+
+# ##### 20-40
+# LandCov20 <- raster_degrade(LandCov, f=2)
+# LandCov40 <- raster_degrade(LandCov, f=4)
+# 
+# raster_summary(LandCov20)
+# raster_summary(LandCov40)
+# 
+# LC_plot20 <- raster_plot(LandCov20)
+# LC_plot40 <- raster_plot(LandCov40)
+# 
+# print(LC_plot20)
+# print(LC_plot40)
+# 
+# #ggsave("LC40.png", LC_plot40) 
+# #ggsave("LC40.pdf", LC_plot40)  
+# 
+# ###### Varying Extent
+# ##40-20-10
+# raster_summary(LandCov40)
+# 
+# LC20_quart <- raster_deextent(LandCov20, 2)
+# raster_summary(LC20_quart)
+# 
+# #for plotting extend to full extent of original data
+# LC20_quart_ext <- extend(LC20_quart, LandCov)
+# LC20_quart_plot <- raster_plot(LC20_quart_ext)
+# print(LC20_quart_plot)
+# 
+# #ggsave("LC20_quart_ext.png", LC20_quart_plot)  
+# #ggsave("LC20_quart_ext.pdf", LC20_quart_plot) 
+# 
+# LC10_quart <- raster_deextent(LandCov, 1.333)
+# raster_summary(LC10_quart)
+# 
+# #for plotting extend to full extent of original data
+# LC10_quart_ext <- extend(LC10_quart, LandCov)
+# LC10_quart_plot <- raster_plot(LC10_quart_ext)
+# print(LC10_quart_plot)
+# 
+# #ggsave("LC10_quart_ext.png", LC10_quart_plot)  
+# #ggsave("LC10_quart_ext.pdf", LC10_quart_plot) 
